@@ -1,0 +1,6 @@
+.slider ul>li a:hover .zoom{
+	display: block;
+}
+.slider ul>li a .zoom{
+	display: none;
+}

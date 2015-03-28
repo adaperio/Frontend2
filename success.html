@@ -1,0 +1,462 @@
+<link rel="stylesheet" media="screen" href="css/style.css"/>
+<link rel="stylesheet" media="screen" href="css/engine.css"/>
+
+<div id="webSiteLoader"></div>
+
+<div class="engine_main_div" id="admin_view" ng-if="adminEnabled">
+    <div id="wrapper">
+        <header class="engine_header">
+            <div class="container">
+
+                <!--logo and company name-->
+                <div class="header_col1">
+                    <h1><a href="index.html"><img src="img/logo.png" alt=""></a></h1>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="small_vertical_space"></div>
+
+    <div class="contents" ng-if="!dataLoaded">
+        <h2>Поиск информации</h2>
+    </div>
+
+    <div class="small_vertical_space"></div>
+    <div class="input-div">
+        <span>Гос.номер</span>
+        <input type="text" placeholder="а001мр77" class="generic-input" ng-model="number">
+        <span>VIN/кузов</span>
+        <input type="text" placeholder="AAAAABBBBBCCCCCDD" class="generic-input" ng-model="vinAsked">
+
+        <button type="submit" class="btn btn-process" ng-click="getCar(number,vinAsked)">
+            Поиск...
+        </button>
+        <p>{{errMessage}}</p>
+
+        <button ng-if="makeLinkAvailable" type="submit" class="btn btn-make-link" ng-click="makeLink(number,vinAsked)">
+            Сделать ссылку...
+        </button>
+    </div>
+
+    <div class="vertical_space"></div>
+</div>
+
+
+<div id="success_view" ng-if="dataAvailable">
+<div id="wrapper" ng-if="!adminEnabled">
+    <header class="engine_header">
+        <div class="container">
+
+            <!--logo and company name-->
+            <div class="header_col1">
+                <h1><a href="index.html"><img src="img/logo.png" alt=""></a></h1>
+            </div>
+        </div>
+    </header>
+</div>
+
+<div class="engine_main_div" ng-repeat="car in cars">
+<div class="contents">
+
+    <h2>Автомобиль</h2>
+
+    <h3>
+        <span ng-if="car.model.length">{{car.model}}</span>
+        <span ng-if="!car.model.length">{{car.num}}</span>
+    </h3>
+
+    <p ng-if="car.num.length">
+        <span class="label_span">Гос.номер:</span> <b>{{car.num}}</b>
+    </p>
+
+    <p ng-if="car.vin.length">
+        <span class="label_span">VIN:</span> <b>{{car.vin}}</b>
+    </p>
+
+    <p ng-if="car.body.length">
+        <span class="label_span">Номер кузова:</span> <b>{{car.body}}</b>
+    </p>
+
+    <p ng-if="car.year.length">
+        <span class="label_span">Год производства:</span> <b>{{car.year}}</b>
+    </p>
+
+    <br>
+
+    <p ng-if="car.engineDisp.length">
+        <span class="label_span">Объем двигателя:</span> <b>{{car.engineDisp}} куб.см.</b>
+    </p>
+
+    <p ng-if="car.engineHp.length">
+        <span class="label_span">Мощность:</span> <b>{{car.engineHp}} л.с.</b>
+    </p>
+
+    <p ng-if="car.bodyColor.length">
+        <span class="label_span">Цвет:</span> <b>{{car.bodyColor}}</b>
+    </p>
+
+    <p ng-if="car.ownerCount.length">
+        <span class="label_span">Кол-во владельцев:</span> <b>{{car.ownerCount}}</b>
+    </p>
+</div>
+
+<div ng-if="car.autoNomerPics.length" class="auto_nomer_pics_left">
+    <p>
+    <table>
+        <tr ng-repeat="link in car.autoNomerPics">
+            <td>
+                <img src="{{link}}" alt="Car photo">
+            </td>
+        </tr>
+    </table>
+    <span class="auto_nomer_label">Фотографии получены с сайта <a href="//www.avto-nomer.ru">avto-nomer.ru</a></span>
+    </p>
+</div>
+
+<br>
+
+<h3>Информация</h3>
+
+<div id="result_contents">
+<!-- Milleage -->
+<div>
+    <h4>
+        <img src="img/yes.png"
+             class="arrow_icon"
+             alt=""/>Пробег автомобиля:
+    </h4>
+
+    <div ng-if="car.milleage">
+        <table class="milleage_table" ng-if="car.milleageArr.length">
+            <tr>
+                <th align="left">Дата фиксации</th>
+                <th align="left">Значение</th>
+            </tr>
+            <tr ng-repeat="item in car.milleageArr">
+                <td>{{item.year}}</td>
+                <td>{{item.milleage}} км.</td>
+            </tr>
+        </table>
+
+                    <span ng-if="car.badMilleageFound">
+                          <font color="red">Внимание! Зафиксированный пробег не вызывает доверия!</font>
+                    </span>
+
+                    <span ng-if="car.fakeMilleageFound">
+                          <font color="red">Внимание! Обнаружен "скрученный пробег"!</font>
+                    </span>
+    </div>
+
+    <div ng-if="!car.milleage">
+        Пробег автомобиля не найден
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!-- Accidents -->
+<div>
+    <h4>
+        <img
+                src="img/yes.png"
+                class="arrow_icon"
+                alt=""
+                />Документы об участии в ДТП:
+    </h4>
+
+    <div ng-if="car.receivedLinks.length">
+        <table>
+            <tr ng-repeat="tuple in car.receivedLinks">
+                <td>
+                    <a class="accident_link" href="{{tuple.link}}">Документ {{$index + 1}}</a>
+                </td>
+            </tr>
+        </table>
+        <span>Ссылки будут работоспособны в течении 24 часов. Вы можете передать их другому человеку</span>
+    </div>
+
+    <div ng-if="!car.receivedLinks.length">
+        Документы об участии в ДТП не найдены
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!-- Accidents 2 -->
+<div>
+    <h4>
+        <img
+                src="img/yes.png"
+                class="arrow_icon"
+                alt=""
+                />Данные об участии в ДТП:
+    </h4>
+
+    <div ng-if="car.receivedDtps.length">
+        <table class="dtps_table" ng-if="car.receivedDtps.length">
+            <tr>
+                <th align="left">Дата фиксации</th>
+                <th align="left">Тип</th>
+                <th align="left">Повреждение</th>
+            </tr>
+            <tr ng-repeat="tuple in car.receivedDtps">
+                <td>{{tuple.date}}</td>
+                <td>{{tuple.type}}</td>
+                <td>{{tuple.damage}}</td>
+            </tr>
+        </table>
+    </div>
+    <div ng-if="!car.receivedDtps.length">
+        Данные об участии в ДТП не найдены
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!-- Photos -->
+<div>
+    <h4>
+        <img src="img/yes.png"
+             class="arrow_icon"
+             alt=""
+                />Фотографии повреждений автомобиля:
+    </h4>
+
+    <div ng-if="car.receivedPhotos.length">
+        <table>
+            <tr ng-repeat="tuple in car.receivedPhotos">
+                <td>
+                    <a class="accident_link" href="{{tuple.link}}">Фото {{$index + 1}}</a>
+                </td>
+            </tr>
+        </table>
+        <span>Ссылки будут работоспособны в течении 24 часов. Вы можете передать их другому человеку</span>
+    </div>
+
+    <div ng-if="!car.receivedPhotos.length">
+        Фотографии повреждений автомобиля не найдены
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!-- Taxi -->
+<div>
+    <h4>
+        <img src="img/yes.png"
+             class="arrow_icon"
+             alt=""
+                />Использование автомобиля в качестве такси:
+    </h4>
+
+    <p ng-if="car.taxiMake.length">
+        Автомобиль {{car.taxiMake}} использовался в качестве такси c <b>{{car.taxiStarted}}</b> по
+        <b>{{car.taxiEnded}}</b>.
+    </p>
+
+    <p ng-if="car.taxiOwner.length">
+        Лицензия на деятельность в качестве такси: {{car.taxiOwner}}.
+    </p>
+
+    <div ng-if="!car.taxiMake.length && !car.taxiOwner.length">
+        Автомобиль не был зарегистрирован в качестве такси
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!--GIBDD -->
+<!--wanted-->
+<div>
+    <h4>
+        <img src="img/yes.png"
+             class="arrow_icon"
+             alt=""
+                />Информация о <b>розыске</b> транспортного средства, в федеральной информационной системе МВД
+        России:
+    </h4>
+
+    <div ng-if="car.gibddWanted">
+                    <span>
+                          <font color="red">Автомобиль <b>ЗНАЧИТСЯ в РОЗЫСКЕ</b>!!!</font>
+                    </span>
+        <table ng-if="car.wantedArr.length">
+            <tr>
+                <th align="left">Марка (модель) ТС</th>
+                <th align="left">Год выпуска</th>
+                <th align="left">Дата постоянного учета</th>
+                <th align="left">Регион инициатор розыска</th>
+            </tr>
+            <tr ng-repeat="item in car.wantedArr">
+                <td>{{item.w_model}}</td>
+                <td>{{item.w_god_wyp}}</td>
+                <td>{{item.w_data_pu}}</td>
+                <td>{{item.w_reg_inic}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div ng-if="car.gotGibddWanted && !car.gibddWanted">
+        Автомобиль не числится в розыске (проверено в ГИБДД)
+    </div>
+
+    <div ng-if="!car.gotGibddWanted">
+        Информация о розыске транспортного средства не найдена
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!--Restricitions-->
+<div>
+    <h4>
+        <img src="img/yes.png"
+             class="arrow_icon"
+             alt=""
+                />Информация о наложении ограничений в федеральной информационной системе МВД России:
+    </h4>
+
+    <div ng-if="car.gotGibddRestricted">
+        <p ng-if="!car.gibddRestricted">
+            Ограничений нет (проверено в ГИБДД)
+        </p>
+
+        <table ng-if="car.restrictedArr.length">
+            <tr>
+                <th align="left">Марка (модель) ТС</th>
+                <th align="left">Год выпуска</th>
+                <th align="left">Дата наложения ограничения</th>
+                <th align="left">Регион наложения ограничения</th>
+                <th align="left">Вид ограничения</th>
+            </tr>
+            <tr ng-repeat="item in car.restrictedArr">
+                <td>{{item.tsmodel}}</td>
+                <td>{{item.tsyear}}</td>
+                <td>{{item.dateogr}}</td>
+                <td>{{item.regname}}</td>
+                <td>{{item.ogrmsg}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div ng-if="!car.gotGibddRestricted">
+        Информация о наложении ограничений не найдена
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!--Reestr restricitions-->
+<div>
+    <h4>
+        <img src="img/yes.png"
+             class="arrow_icon"
+             alt=""
+                />Информация о нахождении в залоге у банков:
+    </h4>
+
+    <div ng-if="car.reestrGotResult">
+        <p ng-if="!car.reestrResult">
+            Автомобиль не находится в залоге
+        </p>
+
+        <p ng-if="car.reestrResult">
+            Автомобиль находится в ЗАЛОГЕ!
+        </p>
+    </div>
+    <div ng-if="!car.reestrGotResult">
+        Информация не найдена
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!--Auctions-->
+<div>
+    <h4>
+        <img src="img/yes.png"
+             class="arrow_icon"
+             alt=""
+                />Проверка истории на аукционах:
+    </h4>
+
+    <div ng-if="!car.auctions.length">
+        История не найдена
+    </div>
+
+    <div ng-repeat="a in car.auctions">
+        <p ng-if="a.date.length">
+            <span class="label_span">Дата:</span> <b>{{a.date}}</b>
+        </p>
+
+        <p ng-if="a.odometr.length">
+            <span class="label_span">Показания пробега:</span> <b>{{a.odometr}} км.</b>
+        </p>
+
+        <p>
+            <span class="label_span">Повреждения:</span> <b></b>
+        </p>
+
+        <p ng-repeat="d in a.damage">
+            <span class="label_span"></span><b>{{d}}</b>
+        </p>
+
+        <br>
+
+        <p>
+            <span class="label_span">Фотографии:</span><b></b>
+        </p>
+        <table>
+            <tr ng-repeat="url in a.photos">
+                <td>
+                    <img src="{{url}}" alt="Car auction photo">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="small_vertical_space"></div>
+
+<!--Customs check-->
+<div>
+    <h4>
+        <img src="img/yes.png"
+             class="arrow_icon"
+             alt=""
+                />Данные таможни:
+    </h4>
+
+    <p ng-if="car.customs.date.length">
+        <span class="label_span">Дата выпуска груза:</span> <b>{{car.customs.date}}</b>
+    </p>
+    <p ng-if="!car.customs.date.length">
+        <span class="label_span">Дата выпуска груза:</span> <b>неизвестна</b>
+    </p>
+
+    <p ng-if="car.customs.odometer.length">
+        <span class="label_span">Показания пробега на момент ввоза:</span> <b>{{car.customs.odometer}} км.</b>
+    </p>
+    <p ng-if="!car.customs.odometer.length">
+        <span class="label_span">Показания пробега на момент ввоза:</span> <b>не найдены</b>
+    </p>
+
+    <p ng-if="car.customs.price.length">
+        <span class="label_span">Таможенная стоимость:</span> <b>{{car.customs.price}}</b>
+    </p>
+    <p ng-if="!car.customs.price.length">
+        <span class="label_span">Таможенная стоимость:</span> <b>не определена</b>
+    </p>
+
+    <p ng-if="car.customs.country.length">
+        <span class="label_span">Страна происхождения:</span> <b>{{car.customs.country}}</b>
+    </p>
+    <p ng-if="!car.customs.country.length">
+        <span class="label_span">Страна происхождения:</span> <b>не определена</b>
+    </p>
+</div>
+
+<div class="vertical_space"></div>
+</div>
+</div>
+</div>

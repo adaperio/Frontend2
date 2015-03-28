@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Adaperio - история автомобиля с пробегом</title>
+
+	<meta charset="utf-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=768">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+    <!--TODO: set metas-->
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/app.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/social.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/bgstretcher.css" />
+
+	<script type="text/javascript" src="js/include_script.js"></script>
+
+	<!--[if lt IE 8]><div style='text-align:center'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/img/upgrade.jpg"border="0"alt=""/></a></div><![endif]-->
+  	<!--[if lt IE 9]>
+  		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
+	   	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	    <link href="css/ie.css" rel="stylesheet" type="text/css">
+    <![endif]-->
+
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter24002680 = new Ya.Metrika({id:24002680,
+                        webvisor:true,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true});
+
+                } catch(e){
+
+                }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-49675055-1', 'adaperio.ru');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body background="img/bg_pic3.jpg">
+<!--web site spinner-->
+	<div id="webSiteLoader"></div>
+<!--button back top-->
+	<div id="back-top"></div>
+<!--page spinner-->
+	<!--<div id="pageLoader"><div></div></div>-->
+<!--gall spinner-->
+	<!--<div class="gall_spinner"></div>-->
+
+    <div class="spinner"></div>
+<!--background image-->
+    <!--<div id="bgStretch"><img src="img/bg_pic4.jpg" alt=""></div>-->
+
+    <!--
+    <div id="bgNav">
+        <ul>
+            <li class="active"><a href="img/bg_pic4.jpg"></a></li>
+            <li><a href="img/bg_pic2.jpg"></a></li>
+            <li><a href="img/bg_pic3.jpg"></a></li>
+            <li><a href="img/bg_pic1.jpg"></a></li>
+        </ul>
+    </div>
+    -->
+
+<!--content wrapper-->
+	<div id="wrapper">
+
+<!--header-->
+		<header>
+			<div class="container">
+
+<!--logo and company name-->		
+				<div class="header_col1">
+					<h1><a href="index.html"><img src="img/logo.png" alt=""></a></h1>
+				</div>
+
+<!--input-->
+                <div class="input-block">
+
+                    <div class="num_input_block" style="z-index: 2;">
+
+                        <input type="text" id="num_input" name="num" placeholder="а001мр"
+                               class="in1 np">
+
+                        <input type="text" id="region_input" name="region" placeholder="77"
+                               class="in2 np">
+
+                    </div>
+
+                    <img src="img/number.png" border="0"/>
+
+                    <button class="btn btn-primary"
+                            id="search_button"
+                            style="position: absolute;"
+                            disabled="disabled">
+                        ПРОВЕРЬТЕ СЕЙЧАС
+                    </button>
+                </div>
+<!--menu-->
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="sf-menu">
+
+                            <li>
+                                <a href="about.html">О проекте</a>
+                            </li>
+
+                            <li>
+                                <a id="a_samples" href="">
+                                    <div class="base_text">Примеры отчетов...</div>
+                                </a>
+
+                                <ul class="subMenu2">
+                                    <li><a id="a_sample1" href="">Отчет 1</a></li>
+                                    <li><a id="a_sample2" href="">Отчет 2</a></li>
+                                    <li><a id="a_sample3" href="">Отчет 3</a></li>
+                                </ul>
+
+                                <!--<li><a href="pr.html"><div class="base_text">СМИ о нас</div></a>-->
+                            <li><a href="http://www.spark.ru/startup/530214fac598f/blog"><div class="base_text">Блог</div></a>
+                            <li><a href="contacts.html"><div class="base_text">Контакты</div></a>
+                        </ul>
+                    </div>
+                </div>
+
+			</div>
+		</header>
+
+<!--content-->
+		<section>
+                <div id="content_part">
+					<div class="container">
+						<div class="dynamicContent">
+
+						</div>
+					</div>
+				</div>
+		</section>
+
+<!--footer-->	
+		<footer>
+			<div class="container">
+				<span>
+                    <span class="bold adaperio_color">adaperio</span> &nbsp; | <a href="agreement.html">Пользовательское соглашение</a>
+                </span>
+
+                <a href="http://twitter.com/Adaperioru" class="sb blue circle no-border twitter" style="float: right; margin-left: 15px;">Twitter</a>
+                <a href="http://vk.com/adaperio" class="sb circle no-border vkontakte" style="float: right; margin-left: 15px;">Vkontakte</a>
+			</div>
+		</footer>
+		<!-- {%FOOTER_LINK} -->
+	</div>
+
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+</html>

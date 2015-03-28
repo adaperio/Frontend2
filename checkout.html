@@ -1,0 +1,361 @@
+<link rel="stylesheet" media="screen" href="css/style.css"/>
+<link rel="stylesheet" media="screen" href="css/engine.css"/>
+
+<div id="checkout_view">
+<div id="webSiteLoader"></div>
+
+<div id="wrapper">
+    <header class="engine_header">
+        <div class="container">
+
+            <!--logo and company name-->
+            <div class="header_col1">
+                <h1><a href="index.html"><img src="img/logo.png" alt=""></a></h1>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="small_vertical_space"></div>
+
+<div class="engine_main_div">
+
+    <div class="contents" ng-if="!dataLoaded">
+        <h2>Данные загружаются...</h2>
+    </div>
+
+        <div ng-if="dataLoaded">
+
+            <div class="left_and_right">
+                <!-- Left div -->
+                <div class="engine_left_div_float">
+                    <div class="contents" ng-if="!somethingFound">
+                        <h3>К сожалению, мы не нашли информацию об автомобиле <span class="label_span">{{numberAsked}}</span>.</h3>
+                        <p>Выполненные проверки:</>
+                    </div>
+
+                    <div ng-if="!somethingFound" class="result_contents">
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Показания пробега.</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Была ли машина в ДТП.</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt="" />
+                            <span>Фото повреждений.</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Работал ли этот автомобиль в качестве такси.</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Находится ли в угоне.</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Будут ли проблемы при постановке на учет.</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Заложен ли по кредиту в банке.</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Таможенная проверка.</span>
+                        </p>
+
+                        <!--
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Какая у него комплектация.</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Какие детали были заменены.</span>
+                        </p>
+                        -->
+                    </div>
+
+                    <div ng-if="somethingFound" class="result_contents">
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Сомневаетесь в показаниях пробега?</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Была ли машина в ДТП?</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt="" />
+                            <span>Интересно увидеть фото повреждений?</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Работал ли этот автомобиль в качестве такси?</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Хотите проверить его на угон?</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Будут ли проблемы при постановке на учет?</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Заложен ли по кредиту в банке?</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Интересно узнать таможенную историю?</span>
+                        </p>
+
+                        <!--
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Какая у него комплектация?</span>
+                        </p>
+
+                        <p>
+                            <img src="img/arrow.png"
+                                 class="arrow_icon"
+                                 alt=""
+                                    />
+                            <span>Какие детали были заменены?</span>
+                        </p>
+                        -->
+                    </div>
+
+                    <br>
+                    <div class="email-div" ng-if="!somethingFound">
+                        <h3>Мы постоянно обновляем базу автомобилей!</h3>
+
+                        <form>
+                            <input type="email" placeholder="ваш e-mail" id="email_input"
+                                   placeholder="email@mail.ru"
+                                   class="email email-input"
+                                   ng-model="email" focus="focusInput">
+
+                            <button type="submit"
+                                    class="btn btn-subscribe"
+                                    ng-click="subscribeEmail(email)">
+                                Подпишись и получи информацию, как только она появится у нас...
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="vertical_space"></div>
+                </div>
+
+                <!-- Right div -->
+                <div class="auto_nomer_pics">
+
+                    <p style="text-align: right;" ng-if="autoNomerPics.length">
+                    <span class="auto_nomer_label" ng-if="autoNomerPics.length">Фотографии получены с сайта <a href="//www.avto-nomer.ru">avto-nomer.ru</a></span>
+                    <table>
+                        <tr ng-repeat="link in autoNomerPics">
+                            <td>
+                                <img src="{{link}}" alt="Car photo" width="400">
+                            </td>
+                        </tr>
+                    </table>
+                    </p>
+
+                    <!--<p ng-if="!autoNomerPics.length">-->
+                    <!--<table>-->
+                    <!--<tr>-->
+                    <!--<td>-->
+                    <!--<img ng-if="!autoNomerPics.length" src="img/no-image.png" alt="No car photo" width="400">-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                    <!--</table>-->
+                    <!--</p>-->
+                </div>
+            </div>
+
+            <div class="small_vertical_space"></div>
+
+            <div ng-repeat="carVin in vinsMap">
+                <div ng-repeat="car in carVin.cars" style="background: #333333;">
+                    <div style="padding: 20px;">
+                        <h2>Автомобиль</h2>
+                        <h3>
+                            <span ng-if="car.model.length">{{car.model}}</span>
+                            <span ng-if="!car.model.length">{{car.nums[0]}}</span>
+                        </h3>
+
+                        <!--Nums: -->
+                        <div ng-if="car.nums.length<=1">
+                            <p>
+                                <span class="label_span">Гос.номер: </span><b>{{car.nums[0]}}</b>
+                            </p>
+                        </div>
+                        <div ng-if="car.nums.length>1">
+                            <p>
+                                <span class="label_span">Гос.номера:</span>
+                            </p>
+                            <p ng-repeat="num in car.nums" style="padding-left: 15px;"><b>{{num}}</b></p>
+                        </div>
+
+                        <p ng-if="car.vin.length">
+                            <span class="label_span">VIN:</span> <b>{{car.vin}}</b>
+                        </p>
+                        <p ng-if="car.body.length">
+                            <span class="label_span">Номер кузова:</span> <b>{{car.body}}</b>
+                        </p>
+                        <p ng-if="car.year.length">
+                            <span class="label_span">Год производства:</span> <b>{{car.year}}</b>
+                        </p>
+                    </div>
+                </div>
+
+                <!--Button div-->
+                <div class="bottom_div" ng-if="somethingFound">
+                    <!--<div class="slogan_div">-->
+                    <!--<h4>Узнайте то, что знаем мы</h4>-->
+                    <!--</div>-->
+
+                    <div class="email-div" style="margin: 5px;">
+                        <form>
+                            <input type="email" placeholder="ваш e-mail" id="email_input"
+                            placeholder="email@mail.ru"
+                            class="email email-input"
+                            ng-model="email" focus="focusInput">
+
+                            <button class="btn btn-checkout"
+                                    id="button_buy"
+                                    ng-click="checkout(email,carVin.cars[0].nums[0],carVin.cars[0].vin)">
+                                Купить полный отчет<br>100 руб.
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="vertical_space"></div>
+            </div>
+
+            <div class="vertical_space"></div>
+
+            <!--Footer-->
+            <div>
+                <div class="checkout_left_div">
+                    <h4>Примеры отчетов:</h4>
+                </div>
+                <p>
+                    <a href="engine.html#/success?InvId=17728031">Отчет 1...</a>
+                </p>
+                <p>
+                    <a href="engine.html#/success?InvId=549532454">Отчет 2...</a>
+                </p>
+                <p>
+                    <a href="engine.html#/success?InvId=78732006">Отчет 3...</a>
+                </p>
+            </div>
+            <div class="vertical_space"></div>
+
+            <!--Partners-->
+            <div class="partners_div">
+                <div class="checkout_left_div">
+                    <h4>При информационном сотрудничестве с:</h4>
+                </div>
+
+                <div>
+                    <div class="logo_div">
+                        <img src="img/vasrf_bw.png" alt="Логотип ВАСРФ">
+                        <p>
+                            <span>Картотека решений ВАС РФ</span>
+                        </p>
+                    </div>
+
+                    <div class="logo_div">
+                        <img src="img/gibdd_bw.png" alt="Логотип ГИБДД">
+                        <p>
+                            <span>ГИБДД РФ</span>
+                        </p>
+                    </div>
+
+                    <div class="logo_div">
+                        <img src="img/gerb_bw.png" alt="Логотип Испольнительная Власть">
+                        <p>
+                            <span>Органы исполнительной власти субъектов РФ</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

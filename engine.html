@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adaperio</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=768">
+    <meta charset="utf-8">
+
+    <meta name="fragment" content="!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=768">
+    <meta name="author" content="Your name">
+
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Adaperio">
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="Adaperio">
+    <meta property="og:url" content="http://www.adaperio.ru">
+    <meta property="og:image" content="img/car.jpg">
+
+    <!--<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>-->
+
+    <link rel="stylesheet" media="screen" href="css/app.css"/>
+
+    <!-- JS from Bower components -->
+    <!--
+    <script src="bower_components/less.js/dist/less-1.5.0.js" data-build="exclude"></script>
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    -->
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <!--<script src="bower_components/angular-backstrech/angular-backstretch.js"></script>-->
+
+    <script src="logics/async.js"></script>
+    <script src="logics/setup.js"></script>
+    <script src="logics/transformers.js"></script>
+    <script src="logics/services.js"></script>
+
+    <script src="logics/helpers.js"></script>
+    <script src="logics/checkout_view.js"></script>
+    <script src="logics/auth_view.js"></script>
+    <script src="logics/success_view.js"></script>
+
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    console.log('Yandex counter init...');
+
+                    w.yaCounter24002680 = new Ya.Metrika({id: 24002680,
+                        webvisor: true,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true});
+
+                } catch (e) {
+                }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () {
+                        n.parentNode.insertBefore(s, n);
+                    };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+</head>
+
+<body ng-app="adaperio">
+   <div ng-view="">
+   </div>
+</body>
+
+</html>

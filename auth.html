@@ -1,0 +1,38 @@
+<link rel="stylesheet" media="screen" href="css/style.css"/>
+<link rel="stylesheet" media="screen" href="css/engine.css"/>
+
+<div class="engine_main_div" id="auth_view">
+    <div id="wrapper">
+        <header class="engine_header">
+            <div class="container">
+
+                <!--logo and company name-->
+                <div class="header_col1">
+                    <h1><a href="index.html"><img src="img/logo.png" alt=""></a></h1>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="small_vertical_space"></div>
+
+    <div class="engine_left_div_float">
+
+        <div class="contents" ng-if="!dataLoaded">
+            <h2>Добро пожаловать!</h2>
+        </div>
+
+        <div class="small_vertical_space"></div>
+
+        <div class="input-div">
+            <form>
+                <input type="text" placeholder="login" class="generic-input" ng-model="username">
+                <input type="password" placeholder="password" class="password generic-input" ng-model="password">
+
+                <button type="submit" class="btn btn-process" ng-click="login(username,password)">
+                    Вход
+                </button>
+            </form>
+            <p>{{errorMsg}}</p>
+        </div>
+    </div>
+</div>

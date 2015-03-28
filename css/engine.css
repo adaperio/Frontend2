@@ -1,0 +1,196 @@
+
+body {
+    background-color: #3A3B39;
+}
+
+.engine_main_div {
+    margin-left: 70px;
+    margin-right: 70px;
+    min-width: 950px;
+    max-width: 1050px;
+}
+
+div#checkout_view, div#success_view {
+    font: 14px/19px Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #aaa;
+}
+
+.checkout_left_div, .engine_left_div_float {
+    width: 500px;
+}
+
+.engine_left_div_float {
+    float:left;
+}
+
+span.label_span {
+    color:#ffffff;
+}
+
+div.logo_div p span {
+    color:#ffffff;
+}
+
+.arrow_button {
+    height: 28px;
+    width: 28px;
+    margin-top: 0px;
+}
+
+div.vertical_space {
+    height:40px;
+    width:100%;
+    clear:both;
+}
+
+div.small_vertical_space {
+    height:30px;
+    width:100%;
+    clear:both;
+}
+
+/*Autonomer*/
+.auto_nomer_pics {
+    float:right;
+    width:410px;
+}
+
+.left_and_right {
+    /*float: left;*/
+}
+
+.auto_nomer_pics table {
+    width: 90%;
+    table-layout:fixed;
+}
+
+.auto_nomer_pics img {
+    width: 400px;
+}
+
+div.button_div {
+    width: 280px;
+    float:left;
+
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*vertical-align:middle;*/
+    /*text-align:center;*/
+}
+
+/**/
+div.bottom_div {
+    /*left: 30%;*/
+    position: relative;
+}
+
+div.bottom_div div.slogan_div {
+    width: 450px;
+}
+
+div.partners_div {
+    float: left;
+}
+
+div.partners_div div.logo_div {
+    width: 300px;
+    float:left;
+    text-align:center;
+}
+
+div.logo_div img {
+    height:100px;
+}
+
+div.logo_div p span {
+    font-size: 12px;
+}
+
+/*IDs:*/
+#spinner_checkout {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 50px;
+    width: 50px;
+    z-index: 20000;
+}
+
+#car72_number {
+    width: 200px;
+}
+
+#car72_number_div {
+    width: 400px;
+    text-align:center;
+}
+
+/********************************/
+/*Success page:*/
+/*
+div#success_view {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
+.auto_nomer_pics_left {
+    width:410px;
+}
+
+.auto_nomer_pics_left table {
+    width: 100%;
+    table-layout:fixed;
+}
+
+.auto_nomer_pics_left img {
+    width: 450px;
+}
+
+div#result_contents table.milleage_table {
+    width: 50%;
+}
+
+div#result_contents table.dtps_table {
+    width: 50%;
+}
+
+div#result_contents table {
+    width: 90%;
+    table-layout:fixed;
+}
+
+.accident_link {
+    font-size: 150%;
+}
+
+.auto_nomer_label {
+    font-size: 70%;
+    text-align: right;
+    padding: 6px;
+}
+
+.email-div, .input-div {
+    width: 400px;
+}
+
+.email-input, .generic-input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    padding: 1em 3em;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    text-transform: none;
+
+    color: 0;
+    border: 0;
+    font-size: 1em;
+    font-weight: 100;
+    cursor: pointer;
+    text-align:center;
+    width: 100%;
+}
